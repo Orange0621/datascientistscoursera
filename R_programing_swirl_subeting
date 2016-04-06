@@ -1,0 +1,999 @@
+| You nailed it! Good job!
+
+| You've reached the end of this lesson! Returning to the main menu...
+
+| Please choose a course, or type 0 to exit swirl.
+
+1: R Programming
+2: Take me to the swirl course repository!
+
+Selection: 1
+
+| Please choose a lesson, or type 0 to return to course menu.
+
+ 1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers       4: Vectors                 
+ 5: Missing Values             6: Subsetting Vectors         7: Matrices and Data Frames   8: Logic                   
+ 9: Functions                 10: lapply and sapply         11: vapply and tapply         12: Looking at Data         
+13: Simulation                14: Dates and Times           15: Base Graphics             
+
+Selection: 5
+
+  |                                                                                                                  |   0%
+
+| Missing values play an important role in statistics and data analysis. Often, missing values must not be ignored, but
+| rather they should be carefully studied to see if there's an underlying pattern or cause for their missingness.
+
+...
+
+  |======                                                                                                            |   5%
+
+| In R, NA is used to represent any value that is 'not available' or 'missing' (in the statistical sense). In this lesson,
+| we'll explore missing values further.
+
+...
+
+  |===========                                                                                                       |  10%
+
+| Any operation involving NA generally yields NA as the result. To illustrate, let's create a vector c(44, NA, 5, NA) and
+| assign it to a variable x.
+
+> x<- c(44, NA, 5, NA)
+
+| Keep working like that and you'll get there!
+
+  |=================                                                                                                 |  15%
+
+| Now, let's multiply x by 3.
+
+> X+3
+Error: object 'X' not found
+> x<- c(44, NA, 5, NA)
+
+| Try again. Getting it right on the first try is boring anyway! Or, type info() for more options.
+
+| Try x * 3.
+
+> X*
++ 3
+Error: object 'X' not found
+> X*3
+Error: object 'X' not found
+> X
+Error: object 'X' not found
+> x
+[1] 44 NA  5 NA
+
+| Almost! Try again. Or, type info() for more options.
+
+| Try x * 3.
+
+> x*3
+[1] 132  NA  15  NA
+
+| Keep working like that and you'll get there!
+
+  |=======================                                                                                           |  20%
+
+| Notice that the elements of the resulting vector that correspond with the NA values in x are also NA.
+
+...
+
+  |============================                                                                                      |  25%
+
+| To make things a little more interesting, lets create a vector containing 1000 draws from a standard normal distribution
+| with y <- rnorm(1000).
+
+> y- rnorm(1000)
+   [1]  7.552627  8.134517  8.066382  8.678760 11.438534  7.832242  8.106229 10.108373 10.642481  9.203850  8.722420
+  [12]  9.729885 10.109875  8.986709  9.983946  9.609509  8.723121 10.997324  8.798608  8.842178  7.870690  9.781466
+  [23]  9.881533  9.351570  8.799334  7.460008  8.460490  9.737773  9.445625  8.834737  9.323337  9.006933  9.388416
+  [34]  9.130091  7.334171  9.692383  7.584382 10.142473  9.455183  9.478229  7.401634  9.611953  9.716201  8.427448
+  [45]  9.477355  9.837599  9.433117  6.768645  9.125139 10.822082  8.310241 10.321264  7.937660  8.884452  8.462415
+  [56]  8.057918  6.901890  9.993356  8.160007 11.196583  8.911855  8.930413  8.718088  9.300815  8.194308  8.637251
+  [67] 10.767082 10.028536  8.917268  9.389621  9.248161  7.379440  8.096340  9.015817  8.242763  8.140252  8.702485
+  [78]  9.234336  8.389056  8.968031  8.333207  8.195231  8.188033  9.376699  8.084988  8.628505  9.428264  8.907333
+  [89]  8.968240  7.964970  9.069682  9.425607  9.490321  8.783347  9.446078  9.195944 10.731567  9.441082  8.469848
+ [100]  8.880448  9.889272  9.606238  9.376647  7.859054  9.002141  9.209182 10.294099  9.408710  7.636566  8.059938
+ [111]  7.798035  8.847249 10.343654  9.388896  8.543013  7.773387 10.753924  8.302784  9.227974  9.641948  8.275979
+ [122]  9.037800  7.274367  7.696626  8.708683  9.074559  8.774044  9.348142  9.815171  9.404192  8.675456  8.870005
+ [133]  7.974674  9.222745  9.255799  9.248065 11.489972  9.176006  9.153275  8.404482  9.097663 10.921807  9.018465
+ [144]  7.170081  9.726932  9.128131 10.336315  8.764881  9.422648  9.772018 10.364437  8.146397  9.181852  8.818235
+ [155]  8.941416  9.228749  9.878158  8.526815  9.250376 10.187918  9.384073  8.451007  8.663686  9.890881  9.851927
+ [166]  8.710808  7.042937  8.587077  8.958238  7.729919  9.804598 10.267946  8.546207  9.648235  7.978344  9.275589
+ [177]  8.492050  9.341863  8.753206  9.440380  7.919033  8.724092  8.326277 10.175063  8.477631  9.833195  8.758719
+ [188]  9.549241  9.423386  8.608910  8.503000  9.088692  8.611695 10.570271  8.485996  9.189900  8.839369  9.449020
+ [199]  8.927639  8.876552  9.611331  9.020298  9.153043  7.650444  9.088412  8.263138  8.957919  8.438769  9.518185
+ [210] 10.985958  8.890255  8.373670  8.552376  9.854653  9.998422  8.716429  9.175809  8.756265  7.705833  8.793756
+ [221]  9.162484 10.124201  8.483774 10.702175  8.867421  9.756508  9.375532  9.244779  9.546369  8.943606  8.837749
+ [232]  8.245480  7.206951  9.236602  8.228110  9.859351  7.776844  8.484942  8.917908  6.890817  7.856184  8.569921
+ [243]  9.749269 10.138510  8.690891  8.379954 10.290129  8.098728  8.867623  7.618627  7.855204  9.948788  8.374194
+ [254]  9.496996  8.155578  8.597250  8.204628  9.598857  7.279106  8.695853  7.126546  9.515186  7.896746  9.959772
+ [265]  7.364187  8.482128  9.733630  8.388427  9.197657  9.361815  8.999895 10.164457  9.440019  9.256916  9.434347
+ [276]  9.250099  9.738437  6.761310  8.433530  8.515686  9.964022  8.811684  9.298441  8.505005 10.366069  8.455808
+ [287]  6.625215 10.822281  8.968836  9.701618  8.939202 10.388118 11.390031  6.414153  9.573202  8.790852  7.895065
+ [298]  8.526676  9.474615  8.830178  7.427383  9.862384  9.275004  8.717933  8.673213  8.637958  9.004894  8.433197
+ [309] 10.111011  9.316188  8.303446  8.126470  8.819233  9.220825 11.804664 10.480375  9.013104  8.730955  9.533140
+ [320] 10.502330  7.583486 10.014240  8.953309  7.117888  9.986346  8.904345  7.035276 11.168239  8.769290  5.852140
+ [331]  9.441829  8.652662 10.105241 10.105812  9.637193  9.834145  9.212600  6.979923  8.265379  7.246931  8.431131
+ [342]  9.488680  8.520275  8.658609 10.949684 10.417262  8.295905  9.506248  8.523836  9.823437  8.096823  8.537505
+ [353]  8.977831  9.684656  7.178928  9.624736  8.682742  8.723583  9.335391  7.557570  9.682254 10.177792  8.051599
+ [364] 10.162913 11.997009  8.797057  7.917478 10.061721 10.250786  8.251340 10.430624  7.821737 13.220745  8.552123
+ [375]  8.670056 10.033674  8.479191  9.650410  7.333047  8.133090  8.778773  9.127363 10.057330  8.249992 11.111513
+ [386]  8.157140  8.135705  9.226127  9.957697  9.117104  9.253655  7.224067 10.970433  8.561784  9.841376  9.332018
+ [397]  8.716759  9.990849  7.855430  9.306893  9.410896  9.992031  9.563059  8.496093  8.544915  9.034109  9.668515
+ [408]  8.782983  8.798786  8.206683 10.626148  7.815527 10.557860  8.353911  9.099335 10.472396  8.771660  9.628807
+ [419]  8.916485  7.964689  8.505139  8.837422  8.785462 10.814110  9.987446  7.790193  7.062435  8.363812 10.176464
+ [430]  9.824277  9.363413  8.675967  7.835570  8.414164  8.857138  8.562699  9.965199  9.869154  8.360165  9.262572
+ [441]  9.819112  9.179732  8.936204  9.641429 10.660118  8.819995  8.488845 10.746415  9.513626  7.691021  8.194731
+ [452]  7.107956  9.608850  8.114738  8.354039  8.476011  9.283453  9.835125  8.401520  9.002243  9.008746  8.114716
+ [463] 10.280194  8.520903  9.267272 10.902187  8.262840  9.236624  9.796672  7.732586  8.204093 10.235033  9.419767
+ [474] 10.823577 10.151675  9.753988  9.244720  9.379638  8.544592  8.968989  7.394764  8.288946  8.268766  7.898554
+ [485]  8.396777 10.768925  9.047754  8.892271  9.158082  7.930639  7.549150  8.687188  8.869265 10.963719 10.312373
+ [496]  7.772692  8.405261  8.721759  7.734329  9.620055  8.577348  8.407538  9.421573  8.247169  8.135743  8.131597
+ [507] 10.403810  8.785043  8.925389  7.938615 11.058297  8.561126  8.372093  8.443948  8.449321  7.185753  8.130599
+ [518]  7.833934 10.811427  8.654304  9.861525  9.070309 10.316670  9.332307  7.321762 10.698784  8.215019  9.226631
+ [529]  7.158248  8.872665  7.928968  6.966713  8.555849  8.674121  8.455872  8.685022  9.506845  9.352016  9.068087
+ [540]  9.707921 10.775259  8.647853  9.421792 10.383749  8.537251  9.545740 10.210303 10.897108  8.716649  8.119757
+ [551] 10.017831  8.973695  8.343172  7.686935  9.697194  9.180273 10.086731  9.071579  9.777841 11.479542 10.075718
+ [562]  7.536609  7.087261  8.948036  8.749190  9.296269  8.484217  9.422160  7.286268  9.622882  9.005599  8.637240
+ [573] 10.135938  9.842461  9.668575  8.284711 10.061585  8.772895 10.414556 11.062260  9.827938  8.991022  7.365407
+ [584]  8.187377  8.872448  8.733420  7.989830  7.748646  8.871804  9.573968  9.383652  8.810605  8.078592  9.096750
+ [595]  8.264476  8.252119  7.995635 11.461571  8.597527  8.874456  9.089811  8.327292  9.951187  9.328500  9.247853
+ [606]  9.853482 10.142584 10.257918  8.928200 11.275215  7.708782  9.230324  7.784467  8.954509  5.900104  9.069553
+ [617] 10.389641  9.628219  7.175085 10.803168 10.308078  9.370690  8.980226  8.679992 10.354681  7.248812  9.270491
+ [628]  9.245613  9.286947  8.751149  7.819829 10.862650  9.739679 10.569054  7.907171  9.775820  8.637864  9.157836
+ [639]  9.196027  7.100461  9.946011 10.885281  8.782412  9.354486  8.343537  9.010346 10.621512  7.800458 10.954400
+ [650]  8.777622  9.306779 10.538054  8.762167  8.460940  9.407691  9.715834  8.934988  8.064178  8.114267  7.614891
+ [661] 11.284620  9.416007  8.145957  9.888982  7.241027  7.542149  8.987455  9.661085  8.874654  9.911261  6.998302
+ [672]  8.661401  9.360277  8.117096  9.562422  9.906841  8.682170 10.087417  9.834392  6.897863  7.951909 10.198233
+ [683]  7.579367  8.387281 10.597332  9.602748  8.323522 11.512866  8.415894  8.708947 10.414882 10.217644  8.455584
+ [694]  8.120440  7.537328  7.479981  7.989370  8.477393  9.018158  9.461435  9.867507  8.712171  8.907355  9.545587
+ [705]  8.880715  8.463657  9.863481  7.795945  9.420718  9.073792  9.571055  7.740702 10.309637 11.724134 11.125832
+ [716]  9.120337  8.889478  9.485335  9.575041 10.264996  9.849779  6.880019 11.229824  7.053705  8.695229  8.610731
+ [727]  6.771381  9.899986  9.439556  9.424299  9.225349 10.638857  9.933965  7.051126 10.475919 10.023162  9.241966
+ [738] 11.435628  9.970503  9.842792  9.757824  7.853757  9.760866  8.744737 10.220075 10.157251  8.694441  6.685369
+ [749]  9.525707  9.303740  8.889318  9.794886  8.933615  9.326898  7.856356 10.141954  8.181113  9.199725  8.301124
+ [760]  7.941805  9.296767  8.794847 11.258355 10.549012 11.715488 11.430072  9.909965 10.460843  8.428044  9.440980
+ [771]  9.455581  9.078885  9.067520  8.774003  8.687945  8.427723 10.363462  8.207298  8.620294 11.058920  9.654807
+ [782]  9.998675  8.328975  8.076782  8.400302  9.108179  9.640127  7.497890  8.051707  7.702213  8.267605  9.023341
+ [793] 10.045928 10.014907  9.766941  9.834319 10.433694  7.694583  9.602634  9.891795  9.367117 10.127749 10.768881
+ [804] 10.818760 11.075176  7.260521  9.596024  8.322602  9.368836  9.034765  8.827612  9.151803 10.084000  8.234312
+ [815]  8.212829  9.669588  7.640090  7.570391  9.301712  8.465627  8.985972  7.893284  8.375042  8.955327  8.676390
+ [826]  8.590049  9.321417  6.683530  8.400849  9.804601  8.279707  9.840045  9.336437  7.830239  8.696041  9.282212
+ [837]  9.085072  9.613737  7.806681 12.421967  8.003953 10.172011  9.054821  9.318232 10.015836  9.956355  8.808130
+ [848]  8.283549  9.756465 10.332119  9.062342  9.297434  8.984815  9.984852  9.548080  9.362979  7.712296 10.589862
+ [859]  6.705442  7.951797  8.999831  8.065698  6.783809  8.326468  9.727245  9.748059  9.642334  8.941493 10.186716
+ [870] 11.486142 10.608199  9.510508  9.499361  8.299593  9.556865  9.742787  8.041136  8.877688  8.656207  8.118627
+ [881]  9.103357  8.965256  8.437121  9.046057  8.694758  9.876497  8.243461  8.956846  8.802429  7.734252  9.631289
+ [892]  9.570683  7.451934  6.851421  9.769746  7.475926  9.366495  7.993104  9.359795 10.855051  8.984116 10.345020
+ [903]  7.039731  8.918451  7.912183  9.403512  9.741573  7.803849  8.818740 10.276937  9.255914  8.505460  9.485979
+ [914]  8.171563  8.942316  8.417616 11.704237  9.923771  8.905682  7.757042  9.956072  9.861712  9.164280 10.205089
+ [925]  8.018184  8.362024  9.510627  6.200003  7.288667 11.221051  8.532302  8.606838  7.848296  9.096425  9.549743
+ [936] 10.725192  9.501976 10.414080  9.869138 11.227972  7.850914  9.039585  7.909157  7.909677  7.122418 10.547213
+ [947]  8.777229 10.011876 10.613490  8.209733  9.181677  8.481011  8.808417  8.529321  9.503834  9.454905  8.360428
+ [958]  9.280815  8.921497  9.002072 10.741210  8.928889  9.080296  8.999183 10.844997  9.221793 10.562995  7.610586
+ [969]  8.272627  7.881191  8.184499  7.919649 10.543321  9.227757  9.910704  8.852111 10.610039  9.157782  9.077131
+ [980]  8.481722  7.931979  9.104697  9.071559  9.359246  9.870079 10.514852  8.766847  8.678641  7.473805 10.045191
+ [991]  8.454749  8.714203  8.642327  9.232225  9.401549  8.247810  9.729088  9.032993  8.134561  8.929413
+
+| Not quite right, but keep trying. Or, type info() for more options.
+
+| The function rnorm() generates random numbers from a normal distribution. Type y <- rnorm(1000).
+
+> y<- rnorm(1000)
+
+| That's a job well done!
+
+  |==================================                                                                                |  30%
+
+| Next, let's create a vector containing 1000 NAs with z <- rep(NA, 1000).
+
+> z<- rep(NA,1000)
+
+| Excellent job!
+
+  |========================================                                                                          |  35%
+
+| Finally, let's select 100 elements at random from these 2000 values (combining y and z) such that we don't know how many
+| NAs we'll wind up with or what positions they'll occupy in our final vector -- my_data <- sample(c(y, z), 100).
+
+> my_data <- sample(c(y,z),100)
+
+| All that practice is paying off!
+
+  |==============================================                                                                    |  40%
+
+| Let's first ask the question of where our NAs are located in our data. The is.na() function tells us whether each element
+| of a vector is NA. Call is.na() on my_data and assign the result to my_na.
+
+> 
+> na()
+Error: could not find function "na"
+> na()
+Error: could not find function "na"
+> 
+> my_data <- sample(c(y,z),100)
+
+| Not quite, but you're learning! Try again. Or, type info() for more options.
+
+| Assign the result of is.na(my_data) to the variable my_na.
+
+> na(my_data
++ )
+Error: could not find function "na"
+> na(my_data)
+Error: could not find function "na"
+> is.na(my_data)
+  [1]  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE
+ [20]  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE
+ [39] FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE
+ [58]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE
+ [77] FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE
+ [96] FALSE FALSE  TRUE FALSE  TRUE
+
+| Keep trying! Or, type info() for more options.
+
+| Assign the result of is.na(my_data) to the variable my_na.
+
+> my_na<- is.na(my_data)
+
+| You got it!
+
+  |===================================================                                                               |  45%
+
+| Now, print my_na to see what you came up with.
+
+> my_na
+  [1]  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE FALSE  TRUE
+ [20]  TRUE  TRUE FALSE  TRUE FALSE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE FALSE  TRUE
+ [39] FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE  TRUE FALSE
+ [58]  TRUE FALSE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE FALSE  TRUE FALSE FALSE
+ [77] FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE  TRUE FALSE FALSE  TRUE  TRUE FALSE FALSE  TRUE  TRUE  TRUE
+ [96] FALSE FALSE  TRUE FALSE  TRUE
+
+| That's the answer I was looking for.
+
+  |=========================================================                                                         |  50%
+
+| Everywhere you see a TRUE, you know the corresponding element of my_data is NA. Likewise, everywhere you see a FALSE, you
+| know the corresponding element of my_data is one of our random draws from the standard normal distribution.
+
+...
+
+  |===============================================================                                                   |  55%
+
+| In our previous discussion of logical operators, we introduced the `==` operator as a method of testing for equality
+| between two objects. So, you might think the expression my_data == NA yields the same results as is.na(). Give it a try.
+
+> my_data==NA
+  [1] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+ [40] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+ [79] NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA NA
+
+| Keep up the great work!
+
+  |====================================================================                                              |  60%
+
+| The reason you got a vector of all NAs is that NA is not really a value, but just a placeholder for a quantity that is
+| not available. Therefore the logical expression is incomplete and R has no choice but to return a vector of the same
+| length as my_data that contains all NAs.
+
+...
+
+  |==========================================================================                                        |  65%
+
+| Don't worry if that's a little confusing. The key takeaway is to be cautious when using logical expressions anytime NAs
+| might creep in, since a single NA value can derail the entire thing.
+
+...
+
+  |================================================================================                                  |  70%
+
+| So, back to the task at hand. Now that we have a vector, my_na, that has a TRUE for every NA and FALSE for every numeric
+| value, we can compute the total number of NAs in our data.
+
+...
+
+  |======================================================================================                            |  75%
+
+| The trick is to recognize that underneath the surface, R represents TRUE as the number 1 and FALSE as the number 0.
+| Therefore, if we take the sum of a bunch of TRUEs and FALSEs, we get the total number of TRUEs.
+
+...
+
+  |===========================================================================================                       |  80%
+
+| Let's give that a try here. Call the sum() function on my_na to count the total number of TRUEs in my_na, and thus the
+| total number of NAs in my_data. Don't assign the result to a new variable.
+
+> sum(my_na)
+[1] 53
+
+| You are doing so well!
+
+  |=================================================================================================                 |  85%
+
+| Pretty cool, huh? Finally, let's take a look at the data to convince ourselves that everything 'adds up'. Print my_data
+| to the console.
+
+> my_data
+  [1]          NA  1.37952149 -1.18104044          NA -0.94050123 -0.16049169          NA          NA          NA
+ [10]          NA          NA          NA  0.34832095  0.38600507          NA          NA          NA  0.50605701
+ [19]          NA          NA          NA -0.63565534          NA  0.72496772          NA          NA          NA
+ [28] -1.94194689  1.17207009          NA          NA          NA          NA -2.03390180          NA          NA
+ [37] -0.85775119          NA -0.06573119          NA          NA -0.20694286  0.68225943 -1.44444423 -0.65630634
+ [46] -0.45418928          NA          NA -0.03787718  0.53926099  0.13477106 -0.21951027          NA          NA
+ [55] -0.81804622          NA -0.88634511          NA  1.08323999          NA          NA          NA          NA
+ [64]          NA          NA -0.69871706 -1.92080712          NA          NA  0.88215194  0.29940178          NA
+ [73] -0.84399613          NA -0.23221507  1.44369652  0.06613064          NA -0.02056969 -0.15554393 -0.54522023
+ [82]  0.01911997          NA  0.88875979  1.19876523          NA -1.00805428 -1.06618080          NA          NA
+ [91]  1.29781859  1.93265657          NA          NA          NA -0.23133758  0.56272937          NA  1.67002256
+[100]          NA
+
+| Nice work!
+
+  |=======================================================================================================           |  90%
+
+| Now that we've got NAs down pat, let's look at a second type of missing value -- NaN, which stands for 'not a number'. To
+| generate NaN, try dividing (using a forward slash) 0 by 0 now.
+
+> my_data
+  [1]          NA  1.37952149 -1.18104044          NA -0.94050123 -0.16049169          NA          NA          NA
+ [10]          NA          NA          NA  0.34832095  0.38600507          NA          NA          NA  0.50605701
+ [19]          NA          NA          NA -0.63565534          NA  0.72496772          NA          NA          NA
+ [28] -1.94194689  1.17207009          NA          NA          NA          NA -2.03390180          NA          NA
+ [37] -0.85775119          NA -0.06573119          NA          NA -0.20694286  0.68225943 -1.44444423 -0.65630634
+ [46] -0.45418928          NA          NA -0.03787718  0.53926099  0.13477106 -0.21951027          NA          NA
+ [55] -0.81804622          NA -0.88634511          NA  1.08323999          NA          NA          NA          NA
+ [64]          NA          NA -0.69871706 -1.92080712          NA          NA  0.88215194  0.29940178          NA
+ [73] -0.84399613          NA -0.23221507  1.44369652  0.06613064          NA -0.02056969 -0.15554393 -0.54522023
+ [82]  0.01911997          NA  0.88875979  1.19876523          NA -1.00805428 -1.06618080          NA          NA
+ [91]  1.29781859  1.93265657          NA          NA          NA -0.23133758  0.56272937          NA  1.67002256
+[100]          NA
+
+| Not exactly. Give it another go. Or, type info() for more options.
+
+| Try 0/0.
+
+> 0/0
+[1] NaN
+
+| Perseverance, that's the answer.
+
+  |============================================================================================================      |  95%
+
+| Let's do one more, just for fun. In R, Inf stands for infinity. What happens if you subtract Inf from Inf?
+
+> 
+> 0/0
+[1] NaN
+
+| You almost had it, but not quite. Try again. Or, type info() for more options.
+
+| Type Inf - Inf. Can you guess the result?
+
+> inf-inf.
+Error: object 'inf' not found
+> Inf-Inf.
+Error: object 'Inf.' not found
+> Inf-Inf
+[1] NaN
+
+| All that practice is paying off!
+
+  |==================================================================================================================| 100%
+
+| Would you like to receive credit for completing this course on Coursera.org?
+
+1: Yes
+2: No
+
+Selection: 1
+What is your email address? 249257517@qq.com
+What is your assignment token? 0MUB1nBtyYoxlNu9
+Grade submission succeeded!
+
+| Nice work!
+
+| You've reached the end of this lesson! Returning to the main menu...
+
+| Please choose a course, or type 0 to exit swirl.
+
+1: R Programming
+2: Take me to the swirl course repository!
+
+Selection: 
+Enter an item from the menu, or 0 to exit
+Selection: 1
+
+| Please choose a lesson, or type 0 to return to course menu.
+
+ 1: Basic Building Blocks      2: Workspace and Files        3: Sequences of Numbers       4: Vectors                 
+ 5: Missing Values             6: Subsetting Vectors         7: Matrices and Data Frames   8: Logic                   
+ 9: Functions                 10: lapply and sapply         11: vapply and tapply         12: Looking at Data         
+13: Simulation                14: Dates and Times           15: Base Graphics             
+
+Selection: 6
+
+  |                                                                                                                  |   0%
+
+| In this lesson, we'll see how to extract elements from a vector based on some conditions that we specify.
+
+...
+
+  |===                                                                                                               |   3%
+
+| For example, we may only be interested in the first 20 elements of a vector, or only the elements that are not NA, or
+| only those that are positive or correspond to a specific variable of interest. By the end of this lesson, you'll know how
+| to handle each of these scenarios.
+
+...
+
+  |======                                                                                                            |   5%
+
+| I've created for you a vector called x that contains a random ordering of 20 numbers (from a standard normal
+| distribution) and 20 NAs. Type x now to see what it looks like.
+
+> x<- 1;20
+
+| That's not exactly what I'm looking for. Try again. Or, type info() for more options.
+
+| Type x to view its contents.
+
+[1] 20
+
+| You're close...I can feel it! Try it again. Or, type info() for more options.
+
+| Type x to view its contents.
+
+> x<- 1:20
+
+| One more time. You can do it! Or, type info() for more options.
+
+| Type x to view its contents.
+
+> 
+> x
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+
+| That's a job well done!
+
+  |=========                                                                                                         |   8%
+
+| The way you tell R that you want to select some particular elements (i.e. a 'subset') from a vector is by placing an
+| 'index vector' in square brackets immediately following the name of the vector.
+
+...
+
+  |============                                                                                                      |  10%
+
+| For a simple example, try x[1:10] to view the first ten elements of x.
+
+> x[1:10]
+ [1]  1  2  3  4  5  6  7  8  9 10
+
+| That's correct!
+
+  |===============                                                                                                   |  13%
+
+| Index vectors come in four different flavors -- logical vectors, vectors of positive integers, vectors of negative
+| integers, and vectors of character strings -- each of which we'll cover in this lesson.
+
+...
+
+  |==================                                                                                                |  15%
+
+| Let's start by indexing with logical vectors. One common scenario when working with real-world data is that we want to
+| extract all elements of a vector that are not NA (i.e. missing data). Recall that is.na(x) yields a vector of logical
+| values the same length as x, with TRUEs corresponding to NA values in x and FALSEs corresponding to non-NA values in x.
+
+...
+
+  |====================                                                                                              |  18%
+
+| What do you think x[is.na(x)] will give you?
+
+1: A vector of length 0
+2: A vector with no NAs
+3: A vector of TRUEs and FALSEs
+4: A vector of all NAs
+
+Selection: 2
+
+| You're close...I can feel it! Try it again.
+
+| Remember that is.na(x) tells us where the NAs are in a vector. So if we subset x based on that, what do you expect to
+| happen?
+
+1: A vector with no NAs
+2: A vector of TRUEs and FALSEs
+3: A vector of length 0
+4: A vector of all NAs
+
+Selection: 4
+
+| All that practice is paying off!
+
+  |=======================                                                                                           |  21%
+
+| Prove it to yourself by typing x[is.na(x)].
+
+> x[is.na(x)]
+integer(0)
+
+| Excellent work!
+
+  |==========================                                                                                        |  23%
+
+| Recall that `!` gives us the negation of a logical expression, so !is.na(x) can be read as 'is not NA'. Therefore, if we
+| want to create a vector called y that contains all of the non-NA values from x, we can use y <- x[!is.na(x)]. Give it a
+| try.
+
+> y<- [!is.na(x)]
+Error: unexpected '[' in "y<- ["
+> x[is.na(x)]
+integer(0)
+
+| Not quite! Try again. Or, type info() for more options.
+
+| Type y <- x[!is.na(x)] to capture all non-missing values from x.
+
+> y<- [!is.na(x)]
+Error: unexpected '[' in "y<- ["
+> y<-[!is.na(x)]
+Error: unexpected '[' in "y<-["
+> y<- [is.na(x)]
+Error: unexpected '[' in "y<- ["
+> y <- [is.na(x)]
+Error: unexpected '[' in "y <- ["
+> info()
+
+| When you are at the R prompt (>):
+| -- Typing skip() allows you to skip the current question.
+| -- Typing play() lets you experiment with R on your own; swirl will ignore what you do...
+| -- UNTIL you type nxt() which will regain swirl's attention.
+| -- Typing bye() causes swirl to exit. Your progress will be saved.
+| -- Typing main() returns you to swirl's main menu.
+| -- Typing info() displays these options again.
+
+> skip(0)
+Error in skip(0) : unused argument (0)
+> skip()
+
+| Entering the following correct answer for you...
+
+> y <- x[!is.na(x)]
+
+| Perseverance, that's the answer.
+
+  |=============================                                                                                     |  26%
+
+| Print y to the console.
+
+> y <- [!is.na(x)]
+Error: unexpected '[' in "y <- ["
+> y
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+
+| You are doing so well!
+
+  |================================                                                                                  |  28%
+
+| Now that we've isolated the non-missing values of x and put them in y, we can subset y as we please.
+
+...
+
+  |===================================                                                                               |  31%
+
+| Recall that the expression y > 0 will give us a vector of logical values the same length as y, with TRUEs corresponding
+| to values of y that are greater than zero and FALSEs corresponding to values of y that are less than or equal to zero.
+| What do you think y[y > 0] will give you?
+
+1: A vector of all the positive elements of y
+2: A vector of all NAs
+3: A vector of TRUEs and FALSEs
+4: A vector of all the negative elements of y
+5: A vector of length 0
+
+Selection: 3
+
+| That's not exactly what I'm looking for. Try again.
+
+| The logical expression y > 0 will give us TRUE for each element of y that is positive. Based on that, what do you think
+| y[y > 0] will return?
+
+1: A vector of length 0
+2: A vector of all the negative elements of y
+3: A vector of all NAs
+4: A vector of TRUEs and FALSEs
+5: A vector of all the positive elements of y
+
+Selection: 1
+
+| Give it another try.
+
+| The logical expression y > 0 will give us TRUE for each element of y that is positive. Based on that, what do you think
+| y[y > 0] will return?
+
+1: A vector of length 0
+2: A vector of all the positive elements of y
+3: A vector of all NAs
+4: A vector of TRUEs and FALSEs
+5: A vector of all the negative elements of y
+
+Selection: 5
+
+| You're close...I can feel it! Try it again.
+
+| The logical expression y > 0 will give us TRUE for each element of y that is positive. Based on that, what do you think
+| y[y > 0] will return?
+
+1: A vector of length 0
+2: A vector of all the negative elements of y
+3: A vector of all NAs
+4: A vector of all the positive elements of y
+5: A vector of TRUEs and FALSEs
+
+Selection: 4
+
+| Excellent work!
+
+  |======================================                                                                            |  33%
+
+| Type y[y > 0] to see that we get all of the positive elements of y, which are also the positive elements of our original
+| vector x.
+
+> y[y>0]
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+
+| That's a job well done!
+
+  |=========================================                                                                         |  36%
+
+| You might wonder why we didn't just start with x[x > 0] to isolate the positive elements of x. Try that now to see why.
+
+> x[x>0]
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+
+| You are amazing!
+
+  |============================================                                                                      |  38%
+
+| Since NA is not a value, but rather a placeholder for an unknown quantity, the expression NA > 0 evaluates to NA. Hence
+| we get a bunch of NAs mixed in with our positive numbers when we do this.
+
+...
+
+  |===============================================                                                                   |  41%
+
+| Combining our knowledge of logical operators with our new knowledge of subsetting, we could do this -- x[!is.na(x) & x >
+| 0]. Try it out.
+
+> x[!is.na(x)& x>0]
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+
+| Excellent job!
+
+  |==================================================                                                                |  44%
+
+| In this case, we request only values of x that are both non-missing AND greater than zero.
+
+...x[!is.na(x)& x>0]
+
+  |=====================================================                                                             |  46%
+
+| I've already shown you how to subset just the first ten values of x using x[1:10]. In this case, we're providing a vector
+| of positive integers inside of the square brackets, which tells R to return only the elements of x numbered 1 through 10.
+
+...
+
+  |========================================================                                                          |  49%
+
+| Many programming languages use what's called 'zero-based indexing', which means that the first element of a vector is
+| considered element 0. R uses 'one-based indexing', which (you guessed it!) means the first element of a vector is
+| considered element 1.
+
+...
+
+  |==========================================================                                                        |  51%
+
+| Can you figure out how we'd subset the 3rd, 5th, and 7th elements of x? Hint -- Use the c() function to specify the
+| element numbers as a numeric vector.
+
+> x<- [[3]] [[5]][[7]]
+Error: unexpected '[[' in "x<- [["
+> [[3]] [[5]][[7]]
+Error: unexpected '[[' in "[["
+> x[!is.na(x)& x>0]
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+
+| Nice try, but that's not exactly what I was hoping for. Try again. Or, type info() for more options.
+
+| Create a vector of indexes with c(3, 5, 7), then put that inside of the square brackets.
+
+> c(3,5,7)
+[1] 3 5 7
+
+| That's not exactly what I'm looking for. Try again. Or, type info() for more options.
+
+| Create a vector of indexes with c(3, 5, 7), then put that inside of the square brackets.
+
+> c(3,5,7)
+[1] 3 5 7
+
+| Not quite right, but keep trying. Or, type info() for more options.
+
+| Create a vector of indexes with c(3, 5, 7), then put that inside of the square brackets.
+
+> c(square(3,5,7)
++ )
+Error: could not find function "square"
+> c(square(3,5,7))
+Error: could not find function "square"
+> skip()
+
+| Entering the following correct answer for you...
+
+> x[c(3, 5, 7)]
+[1] 3 5 7
+
+| You nailed it! Good job!
+
+  |=============================================================                                                     |  54%
+
+| It's important that when using integer vectors to subset our vector x, we stick with the set of indexes {1, 2, ..., 40}
+| since x only has 40 elements. What happens if we ask for the zeroth element of x (i.e. x[0])? Give it a try.
+
+> i(i.e. x[0])
+Error: unexpected symbol in "i(i.e. x"
+> c(square(3,5,7))
+Error: could not find function "square"
+> i(i.e. x[0])
+Error: unexpected symbol in "i(i.e. x"
+> x(i.e. x[0])
+Error: unexpected symbol in "x(i.e. x"
+> x(i.e. x[0])skip()
+Error: unexpected symbol in "x(i.e. x"
+> 
+> skip()
+
+| Entering the following correct answer for you...
+
+> x[0]
+integer(0)
+
+| Keep working like that and you'll get there!
+
+  |================================================================                                                  |  56%
+
+| As you might expect, we get nothing useful. Unfortunately, R doesn't prevent us from doing this. What if we ask for the
+| 3000th element of x? Try it out.
+
+> x
+ [1]  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15 16 17 18 19 20
+
+| Not quite! Try again. Or, type info() for more options.
+
+| Request the 3000th element of x (which does not exist) with x[3000].
+
+> x[3000]
+[1] NA
+
+| Keep up the great work!
+
+  |===================================================================                                               |  59%
+
+| Again, nothing useful, but R doesn't prevent us from asking for it. This should be a cautionary tale. You should always
+| make sure that what you are asking for is within the bounds of the vector you're working with.
+
+...
+
+  |======================================================================                                            |  62%
+
+| What if we're interested in all elements of x EXCEPT the 2nd and 10th? It would be pretty tedious to construct a vector
+| containing all numbers 1 through 40 EXCEPT 2 and 10.
+
+...
+
+  |=========================================================================                                         |  64%
+
+| Luckily, R accepts negative integer indexes. Whereas x[c(2, 10)] gives us ONLY the 2nd and 10th elements of x, x[c(-2,
+| -10)] gives us all elements of x EXCEPT for the 2nd and 10 elements.  Try x[c(-2, -10)] now to see this.
+
+> x[c(-2,-10)]
+ [1]  1  3  4  5  6  7  8  9 11 12 13 14 15 16 17 18 19 20
+
+| Keep up the great work!
+
+  |============================================================================                                      |  67%
+
+| A shorthand way of specifying multiple negative numbers is to put the negative sign out in front of the vector of
+| positive numbers. Type x[-c(2, 10)] to get the exact same result.
+
+> x[-c(2,10)]
+ [1]  1  3  4  5  6  7  8  9 11 12 13 14 15 16 17 18 19 20
+
+| That's a job well done!
+
+  |===============================================================================                                   |  69%
+
+| So far, we've covered three types of index vectors -- logical, positive integer, and negative integer. The only remaining
+| type requires us to introduce the concept of 'named' elements.
+
+...
+
+  |==================================================================================                                |  72%
+
+| Create a numeric vector with three named elements using vect <- c(foo = 11, bar = 2, norf = NA).
+
+> vect<- c(foo = 11 , bar = 2 , norf = NA)
+
+| Perseverance, that's the answer.
+
+  |=====================================================================================                             |  74%
+
+| When we print vect to the console, you'll see that each element has a name. Try it out.
+
+> vect
+ foo  bar norf 
+  11    2   NA 
+
+| Excellent job!
+
+  |========================================================================================                          |  77%
+
+| We can also get the names of vect by passing vect as an argument to the names() function. Give that a try.
+
+> names()
+Error in names() : 0 arguments passed to 'names' which requires 1
+> vect
+ foo  bar norf 
+  11    2   NA 
+
+| Keep trying! Or, type info() for more options.
+
+| Check out the results of names(vect).
+
+> names(vect)
+[1] "foo"  "bar"  "norf"
+
+| Excellent job!
+
+  |===========================================================================================                       |  79%
+
+| Alternatively, we can create an unnamed vector vect2 with c(11, 2, NA). Do that now.
+
+> c(11,2,NA)
+[1] 11  2 NA
+
+| Not quite! Try again. Or, type info() for more options.
+
+| Create an ordinary (unnamed) vector called vect2 that contains c(11, 2, NA).
+
+> vect2<- c(11,2,NA)
+
+| You are quite good my friend!
+
+  |==============================================================================================                    |  82%
+
+| Then, we can add the `names` attribute to vect2 after the fact with names(vect2) <- c("foo", "bar", "norf"). Go ahead.
+
+> names(vect2) <- c("foo","bar", "norf")
+
+| Keep working like that and you'll get there!
+
+  |================================================================================================                  |  85%
+
+| Now, let's check that vect and vect2 are the same by passing them as arguments to the identical() function.
+
+> identical()
+Error in identical() : argument "x" is missing, with no default
+> names(vect2) <- c("foo","bar", "norf")
+
+| One more time. You can do it! Or, type info() for more options.
+
+| The identical() function tells us if its first two arguments are, well, identical.
+
+> indentical("vect")
+Error: could not find function "indentical"
+> indentical("vect","vect2")
+Error: could not find function "indentical"
+> names(vect2) <- c("foo","bar", "norf")
+
+| Nice try, but that's not exactly what I was hoping for. Try again. Or, type info() for more options.
+
+| The identical() function tells us if its first two arguments are, well, identical.
+
+> skip()
+
+| Entering the following correct answer for you...
+
+> identical(vect, vect2)
+[1] TRUE
+
+| All that practice is paying off!
+
+  |===================================================================================================               |  87%
+
+| Indeed, vect and vect2 are identical named vectors.
+
+...
+
+  |======================================================================================================            |  90%
+
+| Now, back to the matter of subsetting a vector by named elements. Which of the following commands do you think would give
+| us the second element of vect?
+
+1: vect["2"]
+2: vect["bar"]
+3: vect[bar]
+
+Selection: 2
+
+| You got it!
+
+  |=========================================================================================================         |  92%
+
+| Now, try it out.
+
+> skip()
+
+| Entering the following correct answer for you...
+
+> vect["bar"]
+bar 
+  2 
+
+| All that hard work is paying off!
+
+  |============================================================================================================      |  95%
+
+| Likewise, we can specify a vector of names with vect[c("foo", "bar")]. Try it out.
+
+> 
+> vect[c("foo")]
+foo 
+ 11 
+
+| Not quite, but you're learning! Try again. Or, type info() for more options.
+
+| Use vect[c("foo", "bar")] to get only the elements of vect named "foo" and "bar".
+
+> vect[c("foo","bar")]
+foo bar 
+ 11   2 
+
+| Excellent work!
+
+  |===============================================================================================================   |  97%
+
+| Now you know all four methods of subsetting data from vectors. Different approaches are best in different scenarios and
+| when in doubt, try it out!
+
+...
+
+  |==================================================================================================================| 100%
+
+| Would you like to receive credit for completing this course on Coursera.org?
+
+1: Yes
+2: No
+
+Selection: 1
+What is your email address? 249257157@qq.com
+What is your assignment token? A1e3WgsmZi9czc40
+Grade submission failed.
+Press ESC if you want to exit this lesson and you
+want to try to submit your grade at a later time.
+
+| Not quite right, but keep trying.
+
+| 
+
+1: Yes
+2: No
+
+Selection: 
+
+
+| Leaving swirl now. Type swirl() to resume.
